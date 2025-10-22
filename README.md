@@ -54,9 +54,22 @@ sudo systemctl enable ipupdater
 
 Use Docker
 
+Docker pull
+
+```bash
+docker pull 0x6a4b.dev/ipupdater:latest
+```
+
+Docker build
+
+```bash
+docker build -t ipupdater .
+```
+
+Run with API key as environment variable
+
 ```bash
 export DNS_APIKEY="apikey" DNS_APISECRET="secret"
-docker pull 0x6a4b.dev/ipupdater:latest
 docker run -d --rm -e DNS_APIKEY -e DNS_APISECRET --name ipupdater 0x6a4b.dev/ipupdater
 ```
 

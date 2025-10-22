@@ -86,7 +86,7 @@ type Record struct {
 func readIpFile() (string, error) {
 	ip, err := os.ReadFile(currentIpFile)
 	if err != nil {
-		return "", fmt.Errorf("Failed to read IP file (%w): %w", currentIpFile, err)
+		return "", fmt.Errorf("Failed to read IP file (%s): %w", currentIpFile, err)
 	}
 
 	return string(ip), nil
@@ -95,9 +95,9 @@ func readIpFile() (string, error) {
 func writeIpFile(ip string) error {
 	err := os.WriteFile(currentIpFile, []byte(ip), 0644)
 	if err != nil {
-		return fmt.Errorf("Failed to write IP file (%w): %w", currentIpFile, err)
+		return fmt.Errorf("Failed to write IP file (%s): %w", currentIpFile, err)
 	}
-	fmt.Printf("IP saved to %w\n", currentIpFile)
+	fmt.Printf("IP saved to %s\n", currentIpFile)
 
 	return nil
 }
@@ -108,11 +108,11 @@ func (conf *Config) readConfig() (*Config, error) {
 
 	yamlFile, err := os.ReadFile(configFile)
 	if err != nil {
-		return nil, fmt.Errorf("Failed to read YAML (%w): %w", configFile, err)
+		return nil, fmt.Errorf("Failed to read YAML (%s): %w", configFile, err)
 	}
 	err = yaml.Unmarshal(yamlFile, conf)
 	if err != nil {
-		return nil, fmt.Errorf("Failed to parse YAML (%w): %w", configFile, err)
+		return nil, fmt.Errorf("Failed to parse YAML (%s): %w", configFile, err)
 	}
 
 	if conf.IpFile != "" {
@@ -231,12 +231,12 @@ func updateDns(conf *Config, ip string) error {
 
 	var res map[string]interface{}
 
-	if err := json.NewDecoder(resp.Body).Decode(res); err != nil {
+	if err := json.NewDecoder(resp.Body).Decode(&res); err != nil {
 		return fmt.Errorf("Failed to decode JSON response: %w", err)
 	}
 
 	if resp.StatusCode != 200 {
-		return fmt.Errorf("Failed to update IP: %w", resp.Status)
+		return fmt.Errorf("Failed to update IP: %s", resp.Status)
 	}
 
 	return nil
