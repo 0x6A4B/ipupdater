@@ -1,0 +1,23 @@
+# Config
+
+
+ipfile: "current_ip.txt"
+logfile: "ip_update.log"
+logging: true
+logging_level: "error" # all, warning, error
+
+ipapi:
+  address:
+    - "https://api.ipify.org?format=json"
+    - "https://api4.my-ip.io/v2/ip.json"
+    - "https://ipv4.seeip.org/jsonip"
+
+dnsapi:
+  update_endpoint: "https://api.porkbun.com/api/json/v3/dns/edit"
+  read_endpoint: "https://api.porkbun.com/api/json/v3/dns/retrieve"
+
+domains:
+  - domain: "domain.com"
+    subdomain: ""
+    wildcard: true
+    id: "your_id"

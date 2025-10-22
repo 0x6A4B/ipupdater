@@ -1,0 +1,7 @@
+*.md
+.git
+.gitignore
+.dockerignore
+Dockerfile
+go.work
+go.work.sum
