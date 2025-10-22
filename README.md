@@ -3,6 +3,9 @@ IP updater for dynamically changing IPs
 
 Supporting currently PorkbunDNS
 
+
+> NOTICE! Currently being changed to use apikeys from ENV and to be modular with DNS APIs, probably with dynamic libraries, and does not work before modifications! Will be fixed shortly!
+
 ## Config
 
 ### YAML
