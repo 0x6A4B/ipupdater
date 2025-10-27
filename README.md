@@ -6,6 +6,14 @@ Supporting currently PorkbunDNS
 
 > NOTICE! Currently being changed to use apikeys from ENV and to be modular with DNS APIs, probably with dynamic libraries, and does not work before modifications! Will be fixed shortly!
 
+
+> Current situation bit too busy and on hold:
+> - Add modules for different DNS service APIs
+> - Maybe using dynamically linking libraries, which would mean adding new services need only an added .so library file
+> - Refactoring code to be modular and designing required exported functions from libraries, e.g. update and about, perhaps
+
+
+
 ## Config
 
 ### YAML
